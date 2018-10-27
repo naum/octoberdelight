@@ -7,7 +7,7 @@ var CamlinternalOO = require("bs-platform/lib/js/camlinternalOO.js");
 
 Random.self_init(/* () */0);
 
-var cityPool = /* array */[
+var citypool = /* array */[
   "New York",
   "Los Angeles",
   "Chicago",
@@ -81,7 +81,7 @@ function genesis() {
 var totalTeams = 8;
 
 exports.totalTeams = totalTeams;
-exports.cityPool = cityPool;
+exports.citypool = citypool;
 exports.randSkill = randSkill;
 exports.genesis = genesis;
 /*  Not a pure module */

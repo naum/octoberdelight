@@ -1,7 +1,7 @@
 Random.self_init();
 
 let totalTeams = 8;
-let cityPool = [|
+let citypool = [|
     "New York", "Los Angeles", "Chicago", "Dallas",
     "Houston", "Washington", "Miami", "Philadelphia",
     "Atlanta", "Boston", "Phoenix", "San Francisco",
