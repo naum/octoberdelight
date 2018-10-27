@@ -1,6 +1,7 @@
 Random.self_init();
 
-let totalTeams = 8;
+let posMatrix = "PPPPCIIIIOOO";
+let totalTeams = 32;
 let citypool = [|
     "New York", "Los Angeles", "Chicago", "Dallas",
     "Houston", "Washington", "Miami", "Philadelphia",
@@ -15,6 +16,8 @@ let citypool = [|
 [@bs.deriving abstract]
 type athlete = {
     name: string,
+    mutable age: int,
+    pos: string,
     skill: array(int),
 };
 
@@ -43,4 +46,31 @@ let randSkill = () => {
     };
 };
 
-let genesis = () => {};
+let randAge = () =>
+    (randSkill() * 6) + Random.int(6);
+
+let randSkillSet = () =>
+    [| 
+        randSkill(), randSkill(), randSkill(),
+        randSkill(), randSkill(), randSkill()
+    |];
+
+let spawnAthlete = (p) => {
+    athlete(
+        ~name=Namepool.draw(), ~age=randAge(), 
+        ~pos=p, ~skill=randSkillSet()
+    );
+};
+
+let spawnAthleteGroup = (posToFill) => {
+    Js.String.split("", posToFill)
+        |> Js.Array.map(p => spawnAthlete(p));
+}
+
+let genesis = () => {
+    let pm = Js.String.repeat(totalTeams, posMatrix);
+    league(
+        ~title="UBA", ~clubs=[| |], 
+        ~seasonNum=0, ~freeagents=spawnAthleteGroup(pm)
+    );
+}
