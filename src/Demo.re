@@ -1,7 +1,8 @@
 
+    
 let uba = Uba.genesis();
-/* Js.log(uba); */
+Js.log(uba); 
 
-Uba.store(uba);
-let uba2 = Uba.load();
-Js.log(uba2);
+Uba.store(uba, Config.savepath);
+let uba2 = Uba.load(Config.savepath);
+Js.log(uba2); 

@@ -123,13 +123,13 @@ var unserialize = (
     function (s) { return JSON.parse(s); }
 );
 
-function load() {
-  return Curry._1(unserialize, Fs.readFileSync("uba.json", "utf8"));
+function load(fp) {
+  return Curry._1(unserialize, Fs.readFileSync(fp, "utf8"));
 }
 
-function store(l) {
+function store(l, fp) {
   var ostr = Curry._1(serialize, l);
-  Fs.writeFileSync("uba.json", ostr, "utf8");
+  Fs.writeFileSync(fp, ostr, "utf8");
   return /* () */0;
 }
 

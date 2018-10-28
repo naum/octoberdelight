@@ -84,14 +84,14 @@ let unserialize: (string) => league = [%bs.raw {|
     function (s) { return JSON.parse(s); }
 |}]
 
-let load = () => {
-    let ostr = Node.Fs.readFileAsUtf8Sync("uba.json");
+let load = (fp) => {
+    let ostr = Node.Fs.readFileAsUtf8Sync(fp);
     unserialize(ostr);
 };
 
-let store = (l) => {
+let store = (l, fp) => {
     let ostr = serialize(l);
-    Node.Fs.writeFileAsUtf8Sync("uba.json", ostr);
+    Node.Fs.writeFileAsUtf8Sync(fp, ostr);
 }
 
 let genesis = () => {

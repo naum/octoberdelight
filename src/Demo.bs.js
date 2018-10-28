@@ -2,12 +2,15 @@
 'use strict';
 
 var Uba$Octoberdelight = require("./Uba.bs.js");
+var Config$Octoberdelight = require("./Config.bs.js");
 
 var uba = Uba$Octoberdelight.genesis(/* () */0);
 
-Uba$Octoberdelight.store(uba);
+console.log(uba);
 
-var uba2 = Uba$Octoberdelight.load(/* () */0);
+Uba$Octoberdelight.store(uba, Config$Octoberdelight.savepath);
+
+var uba2 = Uba$Octoberdelight.load(Config$Octoberdelight.savepath);
 
 console.log(uba2);
 
