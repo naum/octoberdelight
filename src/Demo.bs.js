@@ -5,7 +5,12 @@ var Uba$Octoberdelight = require("./Uba.bs.js");
 
 var uba = Uba$Octoberdelight.genesis(/* () */0);
 
-console.log(uba);
+Uba$Octoberdelight.store(uba);
+
+var uba2 = Uba$Octoberdelight.load(/* () */0);
+
+console.log(uba2);
 
 exports.uba = uba;
+exports.uba2 = uba2;
 /* uba Not a pure module */
