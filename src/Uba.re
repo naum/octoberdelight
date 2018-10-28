@@ -1,7 +1,8 @@
 Random.self_init();
 
-let posMatrix = "PPPPCIIIIOOO";
-let totalTeams = 32;
+let posMatrix = "PPPPIIIIOOOO";
+let skillMatrix = [| "W", "K", "P", "G" |];
+let totalTeams = 8;
 let citypool = [|
     "New York", "Los Angeles", "Chicago", "Dallas",
     "Houston", "Washington", "Miami", "Philadelphia",
@@ -18,7 +19,7 @@ type athlete = {
     name: string,
     mutable age: int,
     pos: string,
-    skill: array(int),
+    skill: Js.Dict.t(int),
 };
 
 [@bs.deriving abstract]
@@ -49,11 +50,10 @@ let randSkill = () => {
 let randAge = () =>
     (randSkill() * 6) + Random.int(6);
 
-let randSkillSet = () =>
-    [| 
-        randSkill(), randSkill(), randSkill(),
-        randSkill(), randSkill(), randSkill()
-    |];
+let randSkillSet = () => 
+    skillMatrix
+        |> Js.Array.map(sk => (sk, randSkill()))
+        |> Js.Dict.fromArray;
 
 let spawnAthlete = (p) => {
     athlete(
@@ -66,6 +66,10 @@ let spawnAthleteGroup = (posToFill) => {
     Js.String.split("", posToFill)
         |> Js.Array.map(p => spawnAthlete(p));
 }
+
+let spawnClubs = () => {
+
+};
 
 let genesis = () => {
     let pm = Js.String.repeat(totalTeams, posMatrix);
