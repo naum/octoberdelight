@@ -14,6 +14,8 @@ var uba2 = Uba$Octoberdelight.load(Config$Octoberdelight.savepath);
 
 console.log(uba2);
 
+console.log(Config$Octoberdelight.lsout);
+
 exports.uba = uba;
 exports.uba2 = uba2;
 /* uba Not a pure module */

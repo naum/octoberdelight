@@ -2,11 +2,20 @@
 'use strict';
 
 var Caml_sys = require("bs-platform/lib/js/caml_sys.js");
+var Child_process = require("child_process");
 
 var homedir = Caml_sys.caml_sys_getenv("HOME");
 
 var savepath = homedir + "/.uba.json";
 
+var ncpo = {
+  encoding: "Utf8"
+};
+
+var lsout = Child_process.execSync("uptime", ncpo);
+
 exports.homedir = homedir;
 exports.savepath = savepath;
+exports.ncpo = ncpo;
+exports.lsout = lsout;
 /* homedir Not a pure module */
