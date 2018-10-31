@@ -1,7 +1,7 @@
 Random.self_init();
 
 let posMatrix = "PPPPCIIIIOOO";
-let skillMatrix = [| "W", "K", "P", "R", "G" |];
+let skillMatrix = [| "W", "K", "P", "G" |];
 let totalTeams = 8;
 let citypool = [|
     "New York", "Los Angeles", "Chicago", "Dallas",

@@ -17,7 +17,6 @@ var skillMatrix = /* array */[
   "W",
   "K",
   "P",
-  "R",
   "G"
 ];
 
